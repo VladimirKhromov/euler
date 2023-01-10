@@ -1,31 +1,21 @@
 """
-The prime factors of 13195 are 5, 7, 13 and 29.
-What is the largest prime factor of the number 600851475143 ?
+A palindromic number reads the same both ways. 
+The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+Find the largest palindrome made from the product of two 3-digit numbers.
 
 """
 
-# TO DO late!
+def palindrome():
+    large_number = 0
+    coord = None
+    for i in range(999, 100, -1):
+        for j in range (i, 100, -1):
+            res = i * j
+            if str(res) == str(res)[::-1]:
+                large_number = max(large_number, res)
+                if res == large_number:
+                    coord = (i, j)
+    print(large_number, coord)
+    return large_number
 
-limit = 600851475143
-
-def nod(n:int) -> list:
-    if n >= 50000:
-        print('very large number')
-        raise ValueError("very large number")
-
-    result = []
-    for i in range(n-1, 1, -1):
-        if n % i == 0:
-            if not nod(i):
-                result.append(i)
-    result.sort()
-    return result
-
-try:
-    assert nod(13195) == [5, 7, 13, 29]
-except AssertionError:
-    print("Test error")
-else:
-    print('Test OK')
-
-print(nod(600851475143))
+palindrome()
