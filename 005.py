@@ -9,25 +9,13 @@ limit_max = 20
 min_value = 1 * 2 * 3 * 5 * 7 * 11 * 13 * 17 * 19
 print(min_value)
 
-    while True:
-        temp = limit
-        temp /= 2
-        for i in range(min, max):
-            if temp%i != 0:
-                is_continue = False
-        limit = temp
-    
-
-
-
-
-
-
-
-
-
-
-
+while True:
+    temp = limit
+    temp /= 2
+    for i in range(min, max):
+        if temp % i != 0:
+            is_continue = False
+    limit = temp
 
 
 def the_smallest_number(min, max):
@@ -41,9 +29,8 @@ def the_smallest_number(min, max):
         temp = limit
         temp /= 2
         for i in range(min, max):
-            if temp%i != 0:
+            if temp % i != 0:
                 is_continue = False
         limit = temp
-    
-    return limit
 
+    return limit
