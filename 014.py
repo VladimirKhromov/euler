@@ -12,6 +12,7 @@ Although it has not been proved yet (Collatz Problem), it is thought that all st
 Which starting number, under one million, produces the longest chain?
 NOTE: Once the chain starts the terms are allowed to go above one million.
 """
+cache = {}
 
 
 def collatz(num: int, chain=0):
@@ -19,10 +20,15 @@ def collatz(num: int, chain=0):
         return chain + 1
     elif num % 2 == 0:
         num = num // 2
-        chain = collatz(num, chain + 1)
+        if num in cache:
+            chain += cache[num] + 1
+        else:
+            chain = collatz(num, chain + 1)
+
     else:
         num = 3 * num + 1
         chain = collatz(num, chain + 1)
+
     return chain
 
 
@@ -33,8 +39,9 @@ assert collatz(8) == 4, "collatz(8)"
 
 
 maximum = [1, 1]
-for i in range(499999, 10 ** 6, 2):
+for i in range(1, 10 ** 6, 2):
     result = collatz(i)
+    cache[i] = result
     if result > maximum[0]:
         maximum = [result, i]
 print(f"The longest chain for {maximum[1]} is {maximum[0]}")
