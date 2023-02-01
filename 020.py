@@ -27,5 +27,5 @@ except AssertionError:
 
 
 
-number = -1
+number = 100
 print(f"The sum of the digits in the number {number}! is {factorial_digit_sum(number)}")
