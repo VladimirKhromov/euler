@@ -4,28 +4,22 @@ What is the largest prime factor of the number 600851475143 ?
 
 """
 
-# TO DO late!
 
-limit = 600851475143
+def prime_factors(number: int) -> int:
+    count = 2
+    while True:
+        if number % count == 0:
+            number /= count
+            if number == 1:
+                return count
+        count += 1
 
-def nod(n:int) -> list:
-    if n >= 50000:
-        print('very large number')
-        raise ValueError("very large number")
-
-    result = []
-    for i in range(n-1, 1, -1):
-        if n % i == 0:
-            if not nod(i):
-                result.append(i)
-    result.sort()
-    return result
 
 try:
-    assert nod(13195) == [5, 7, 13, 29]
+    assert prime_factors(13195) == 29
 except AssertionError:
-    print("Test error")
-else:
-    print('Test OK')
+    print("prime_factors fail")
 
-print(nod(600851475143))
+number = 600851475143
+result = prime_factors(number)
+print(f"The largest prime factor of the {number} is {result}")
